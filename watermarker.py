@@ -1,5 +1,3 @@
-from os import getcwd
-from time import time
 import io
 
 import numpy as np
@@ -88,14 +86,3 @@ class WaterMarker:
         final_image.save(buffer, format='PNG')
         return buffer.getvalue()
 
-
-if __name__ == '__main__':
-    tasks = [('dark_image.png', 'white text'),
-             ('light_image.png', 'dark text'),
-             ('baby.jpg', 'Downloaded from Unsplash.com'),
-             ('klim.jpg', 'Downloaded from Unsplash.com')]
-    for task in tasks:
-        wm = WaterMarker(open(task[0], 'rb'), task[1])
-        #print(wm.is_light(f1), wm.is_light(f2))
-        with open(f'{getcwd()}/{int(time())}.png', 'wb') as f:
-            f.write(wm.place_watermark())
